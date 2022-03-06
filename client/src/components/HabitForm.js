@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
-import { createHabit } from "../actions/habits";
-import { useDispatch } from "react-redux";
+import { createHabit, editHabit } from "../actions/habits";
+import { addHabitId } from "../actions/utilsAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const CreateHabit = () => {
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
+
+  const [habitData, setHabitData] = useState({
+    habitName: "",
+    habitDescription: "",
+    habitFrequency: [0, 0, 0, 0, 0, 0, 0],
+  });
+
+  const { selectedHabit } = useSelector((state) => state.utils);
+
+  useEffect(() => {
+    if (selectedHabit.habitName) {
+      setHabitData(selectedHabit);
+    }
+  }, [selectedHabit]);
 
   const customStyles = {
     content: {
@@ -23,12 +39,6 @@ const CreateHabit = () => {
 
   const isOpen = true;
 
-  const [habitData, setHabitData] = useState({
-    habitName: "",
-    habitDescription: "",
-    habitFrequency: [0, 0, 0, 0, 0, 0, 0],
-  });
-
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setHabitData({ ...habitData, [name]: value });
@@ -43,19 +53,26 @@ const CreateHabit = () => {
   };
 
   const closeModal = () => {
+    dispatch(addHabitId({}));
     navigate("/");
   };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(createHabit(habitData));
+    if (selectedHabit.habitName) {
+      dispatch(editHabit(selectedHabit._id, habitData));
+    } else {
+      dispatch(createHabit(habitData));
+    }
     navigate("/");
   };
 
   if (!isOpen) return null;
   return (
     <Modal onRequestClose={closeModal} isOpen={isOpen} style={customStyles}>
-      <h3 className="text-xl my-8 text-[#3E1D46] font-medium">Add a habit</h3>
+      <h3 className="text-xl my-8 text-[#3E1D46] font-medium">
+        {selectedHabit.habitName ? "Edit habit" : "Add habit"}
+      </h3>
       <form className="w-full" onSubmit={onSubmitHandler}>
         <div className=" my-10 mx-auto relative  z-0 mb-6 w-1/2 group ">
           <input
@@ -97,6 +114,7 @@ const CreateHabit = () => {
           <div className="w-full flex">
             <div className="text-center">
               <input
+                checked={habitData.habitFrequency[0]}
                 type="checkbox"
                 className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 onChange={onFrequencyChangeHandler}
@@ -111,6 +129,7 @@ const CreateHabit = () => {
             <div className="text-center">
               <input
                 type="checkbox"
+                checked={habitData.habitFrequency[1]}
                 onChange={onFrequencyChangeHandler}
                 className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 id="monday"
@@ -124,6 +143,7 @@ const CreateHabit = () => {
             <div className="text-center">
               <input
                 type="checkbox"
+                checked={habitData.habitFrequency[2]}
                 onChange={onFrequencyChangeHandler}
                 className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 id="tuesday"
@@ -137,6 +157,7 @@ const CreateHabit = () => {
             <div className="text-center">
               <input
                 type="checkbox"
+                checked={habitData.habitFrequency[3]}
                 onChange={onFrequencyChangeHandler}
                 className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 id="wednesday"
@@ -150,6 +171,7 @@ const CreateHabit = () => {
             <div className="text-center">
               <input
                 type="checkbox"
+                checked={habitData.habitFrequency[4]}
                 onChange={onFrequencyChangeHandler}
                 id="thursday"
                 className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
@@ -164,6 +186,7 @@ const CreateHabit = () => {
               <input
                 type="checkbox"
                 onChange={onFrequencyChangeHandler}
+                checked={habitData.habitFrequency[5]}
                 className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 id="friday"
                 name="5"
@@ -177,6 +200,7 @@ const CreateHabit = () => {
               <input
                 type="checkbox"
                 onChange={onFrequencyChangeHandler}
+                checked={habitData.habitFrequency[6]}
                 className="form-checkbox h-5 w-5 accent-[#8d2ba5]  px-6"
                 id="saturday"
                 name="6"

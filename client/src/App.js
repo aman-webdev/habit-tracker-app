@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/pomodoro" element={<Pomodoro />} />
-          <Route path="/createhabit" element={<HabitForm />} />
+          <Route path="/habit" element={<HabitForm />} />
         </Routes>
       </div>
     </BrowserRouter>

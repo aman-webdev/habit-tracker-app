@@ -12,7 +12,7 @@ const Header = () => {
         <p className="text-sm opacity-60 mt-1">Today is {renderDate()}</p>
       </div>
       <button
-        onClick={() => navigate("/createhabit")}
+        onClick={() => navigate("/habit")}
         className="bg-[#0F1422] text-white  py-3 px-4 text-sm rounded-md"
       >
         Add New Habit
