@@ -57,106 +57,141 @@ const CreateHabit = () => {
     <Modal onRequestClose={closeModal} isOpen={isOpen} style={customStyles}>
       <h3 className="text-xl my-8 text-[#3E1D46] font-medium">Add a habit</h3>
       <form className="w-full" onSubmit={onSubmitHandler}>
-        <div className="w-1/2 my-4 mx-auto ">
-          <label className="block" htmlFor="habit-name">
-            Habit
-          </label>
+        <div className=" my-10 mx-auto relative  z-0 mb-6 w-1/2 group ">
           <input
-            onChange={onChangeHandler}
-            className="py-2 px-4 w-full bg-[rgba(0,0,0,.1)] focus:outline-none"
-            id="habit-name"
-            name="habitName"
             type="text"
-          />
-        </div>
-        <div className="w-1/2 my-4 mx-auto  ">
-          <label className="block" htmlFor="habit-description">
-            Habit Description
-          </label>
-          <input
+            name="habitName"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            placeholder=" "
+            required
+            autoComplete="off"
+            value={habitData.habitName}
             onChange={onChangeHandler}
-            id="habit-description"
+          />
+          <label
+            for="habitName"
+            class="absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:accent-[#8d2ba5] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >
+            Habit Name
+          </label>
+        </div>
+        <div className=" my-10 mx-auto relative  z-0 mb-6 w-1/2 group ">
+          <input
             type="text"
             name="habitDescription"
-            className="py-2 px-4 w-full bg-[rgba(0,0,0,.1)] focus:outline-none"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            placeholder=" "
+            required
+            autoComplete="off"
+            value={habitData.habitDescription}
+            onChange={onChangeHandler}
           />
+          <label
+            for="habitName"
+            class="absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:accent-[#8d2ba5] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >
+            Habit Description
+          </label>
         </div>
-        <div className="w-1/2 my-4 mx-auto">
-          <label htmlFor="">Frequency</label>
+        <div className="w-1/2 my-12 mx-auto">
           <div className="w-full flex">
-            <div>
+            <div className="text-center">
               <input
                 type="checkbox"
+                className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 onChange={onFrequencyChangeHandler}
                 id="sunday"
                 name="0"
                 value="sunday"
               />
-              <label for="sunday">Sun</label>
+              <label for="sunday" className="text-sm">
+                Sun
+              </label>
             </div>
-            <div>
+            <div className="text-center">
               <input
                 type="checkbox"
                 onChange={onFrequencyChangeHandler}
+                className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 id="monday"
                 name="1"
                 value="monday"
               />
-              <label for="monday">Mon</label>
+              <label for="monday" className="text-sm">
+                Mon
+              </label>
             </div>
-            <div>
+            <div className="text-center">
               <input
                 type="checkbox"
                 onChange={onFrequencyChangeHandler}
+                className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 id="tuesday"
                 name="2"
                 value="tuesday"
               />
-              <label for="tuesday">Tue</label>
+              <label for="tuesday" className="text-sm">
+                Tue
+              </label>
             </div>
-            <div>
+            <div className="text-center">
               <input
                 type="checkbox"
                 onChange={onFrequencyChangeHandler}
+                className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 id="wednesday"
                 name="3"
                 value="wednesday"
               />
-              <label for="wednesday">Wed</label>
+              <label for="wednesday" className="text-sm">
+                Wed
+              </label>
             </div>
-            <div>
+            <div className="text-center">
               <input
                 type="checkbox"
                 onChange={onFrequencyChangeHandler}
                 id="thursday"
+                className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 name="4"
                 value="thursday"
               />
-              <label for="thursday">Thur</label>
+              <label for="thursday" className="text-sm">
+                Thur
+              </label>
             </div>
-            <div>
+            <div className="text-center">
               <input
                 type="checkbox"
                 onChange={onFrequencyChangeHandler}
+                className="form-checkbox h-5 w-5 accent-[#8d2ba5]"
                 id="friday"
                 name="5"
                 value="friday"
               />
-              <label for="friday">Fri</label>
+              <label for="friday" className="text-sm">
+                Fri
+              </label>
             </div>
-            <div>
+            <div className="text-center">
               <input
                 type="checkbox"
                 onChange={onFrequencyChangeHandler}
+                className="form-checkbox h-5 w-5 accent-[#8d2ba5]  px-6"
                 id="saturday"
                 name="6"
                 value="saturday"
               />
-              <label for="saturday">Sat</label>
+              <label for="saturday" className="text-sm">
+                Sat
+              </label>
             </div>
           </div>
         </div>
-        <button type="submit" className="mx-auto w-1/4 bg-slate-200">
+        <button
+          type="submit"
+          className="mx-auto block  bg-[#7e2d92] text-white py-3 px-8 rounded-md "
+        >
           Create Habit
         </button>
       </form>

@@ -5,7 +5,7 @@ const Habits = () => {
   const { habits } = useSelector((state) => state);
 
   return (
-    <div className="mt-6">
+    <div className="mt-6  ">
       {habits.map((habit) => (
         <Habit key={habit.habitName} habit={habit} />
       ))}

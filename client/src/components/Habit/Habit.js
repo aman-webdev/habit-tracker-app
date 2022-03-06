@@ -1,5 +1,8 @@
 import React from "react";
 import renderDate from "../../utils/renderDate";
+import getDays from "../../utils/getDays";
+import CheckBox from "../CheckBox/Checkbox";
+
 const Habit = ({ habit }) => {
   return (
     <div className="bg-[#70367C] w-1/3 mt-10 p-4 px-6 rounded-md">
@@ -26,6 +29,11 @@ const Habit = ({ habit }) => {
         </svg>
       </div>
       <p className="mt-5 text-[#f1b3f8] opacity-80">{habit.habitDescription}</p>
+      <div className="flex w-full flex-wrap mt-6 gap-2 justify-center items-center cursor-pointer">
+        {habit.habitFrequency.map((freq, i) => (
+          <CheckBox name={i} value={freq} date={getDays()[i]} />
+        ))}
+      </div>
     </div>
   );
 };

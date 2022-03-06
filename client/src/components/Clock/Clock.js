@@ -5,7 +5,9 @@ import "./style.css";
 const Clock = ({ percentage }) => {
   return (
     <div className=" mx-auto flex justify-center items-center  clock-container bg-[#310E3A]">
-      <p className="text-white text-6xl">{percentage}</p>
+      <p className="text-white text-6xl relative">
+        {percentage} <span className="text-lg absolute bottom-0">%</span>{" "}
+      </p>
     </div>
   );
 };
