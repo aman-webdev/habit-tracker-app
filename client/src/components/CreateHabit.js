@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
+import { createHabit } from "../actions/habits";
+import { useDispatch } from "react-redux";
+
 const CreateHabit = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const customStyles = {
     content: {
       width: "50%",
@@ -43,6 +48,8 @@ const CreateHabit = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    dispatch(createHabit(habitData));
+    navigate("/");
   };
 
   if (!isOpen) return null;

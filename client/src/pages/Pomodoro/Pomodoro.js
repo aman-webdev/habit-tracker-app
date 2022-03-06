@@ -10,13 +10,13 @@ const Pomodoro = () => {
   const [percentage, setPercentage] = useState(0);
 
   const pomodoroTimerHandler = () => {
-    const currentTime = new Date().toLocaleTimeString().split(":");
+    const currentTime = new Date().toTimeString().split(":");
     const currentTimeMin = new Date().getTime();
-
+    console.log(currentTime);
     let hours = parseInt(currentTime[0]);
     let minutes = parseInt(currentTime[1]);
-    let seconds = parseInt(currentTime[2]);
-    console.log(minutes);
+    let seconds = parseInt(currentTime[2].split(" ")[0]);
+    console.log(minutes, hours, seconds);
     let cooldownTime;
     const time = new Date().toDateString();
 
@@ -32,18 +32,18 @@ const Pomodoro = () => {
     } else {
       seconds = seconds + 25;
     }
-    if (hours === 24) {
-      hours = 0;
+    if (hours + 1 > 24) {
+      hours = hours + 1 - 24;
     }
 
     cooldownTime = new Date(`${time} ${hours}:${minutes}:${seconds}`).getTime();
-
+    console.log(cooldownTime);
     setInterval(() => {
-      const range = cooldownTime - currentTimeMin;
       const cur = new Date().getTime();
       const totalTime = cooldownTime - currentTimeMin;
+      console.log(cooldownTime, currentTimeMin);
       const timeLeft = cooldownTime - cur;
-      const progress = cur - currentTimeMin;
+
       const percentage = 100 - (timeLeft / totalTime) * 100;
       console.log(percentage);
       setPercentage(percentage.toFixed(1));

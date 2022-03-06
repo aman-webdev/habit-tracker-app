@@ -1,10 +1,12 @@
 import React from "react";
 import renderDate from "../../utils/renderDate";
-const Habit = () => {
+const Habit = ({ habit }) => {
   return (
     <div className="bg-[#70367C] w-1/3 mt-10 p-4 px-6 rounded-md">
       <div className="flex justify-between items-center w-full">
-        <p className="text-white text-lg font-medium">Drink Water</p>
+        <p className="text-white text-lg font-medium">
+          {`${habit.habitName[0].toUpperCase()}${habit.habitName.slice(1)}`}
+        </p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="icon cursor-pointer opacity-60 icon-tabler icon-tabler-dots-vertical"
@@ -23,6 +25,7 @@ const Habit = () => {
           <circle cx="12" cy="5" r="1" />
         </svg>
       </div>
+      <p className="mt-5 text-[#f1b3f8] opacity-80">{habit.habitDescription}</p>
     </div>
   );
 };
