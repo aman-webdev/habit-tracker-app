@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addHabitId } from "../../actions/utilsAction";
 import { deleteHabit } from "../../actions/habits";
 import { useNavigate } from "react-router-dom";
+
 const Habit = ({ habit }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ const Habit = ({ habit }) => {
       </div>
       <div className="flex w-full flex-wrap mt-6 gap-2 justify-center items-center cursor-pointer">
         {habit.habitFrequency.map((freq, i) => (
-          <CheckBox name={i} value={freq} date={getDays()[i]} />
+          <CheckBox name={i} value={freq} date={getDays()[i]} id={habit._id} />
         ))}
       </div>
     </div>

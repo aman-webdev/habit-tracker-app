@@ -1,17 +1,28 @@
 import React, { useState } from "react";
-
-const Checkbox = ({ name, value, date }) => {
+import { useDispatch } from "react-redux";
+import { tickHabit } from "../../actions/habits";
+const Checkbox = ({ name, value, date, id }) => {
+  const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
 
   const checkedOnclickHandler = () => {
     setIsChecked(!isChecked);
   };
 
+  const updateHabit = () => {
+    const nowDate = new Date().toDateString();
+
+    if (nowDate.includes(date)) {
+      checkedOnclickHandler();
+      dispatch(tickHabit(id));
+    }
+  };
+
   return (
     <button
       disabled={!value}
       className="w-1/6 flex flex-col justify-center items-center"
-      onClick={checkedOnclickHandler}
+      onClick={updateHabit}
     >
       {!isChecked ? (
         <svg

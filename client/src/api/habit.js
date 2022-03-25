@@ -12,3 +12,5 @@ export const editHabit = (habitId, habitData) =>
 export const deleteHabit = (habitId) => {
   axios.delete(`${URL}/delete/${habitId}`);
 };
+
+export const tickHabit = (habitId) => axios.patch(`${URL}/tick/${habitId}`);

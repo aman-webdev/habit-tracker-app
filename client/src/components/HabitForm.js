@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createHabit, editHabit } from "../actions/habits";
 import { addHabitId } from "../actions/utilsAction";
 import { useDispatch, useSelector } from "react-redux";
+import { getDaysInMonth } from "../utils/getDates";
 
 const CreateHabit = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const CreateHabit = () => {
     habitName: "",
     habitDescription: "",
     habitFrequency: [0, 0, 0, 0, 0, 0, 0],
+    dates: {},
   });
 
   const { selectedHabit } = useSelector((state) => state.utils);
@@ -66,6 +68,19 @@ const CreateHabit = () => {
     }
     navigate("/");
   };
+
+  const calculateDates = () => {
+    const date = new Date();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return getDaysInMonth(month, year);
+  };
+  console.log(habitData);
+
+  useEffect(() => {
+    const dates = calculateDates();
+    setHabitData({ ...habitData, dates });
+  }, []);
 
   if (!isOpen) return null;
   return (
