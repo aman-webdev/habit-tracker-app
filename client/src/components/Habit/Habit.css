@@ -1,0 +1,4 @@
+:root {
+  --toastify-color-progress-light: linear-gradient(to right, #5856d6, #70367c);
+  --toastify-color-error: #70367c;
+}

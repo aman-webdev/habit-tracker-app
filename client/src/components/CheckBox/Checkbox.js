@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { tickHabit } from "../../actions/habits";
-const Checkbox = ({ name, value, date, id }) => {
+const Checkbox = ({ name, value, date, id, notify }) => {
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
 
@@ -15,6 +15,8 @@ const Checkbox = ({ name, value, date, id }) => {
     if (nowDate.includes(date)) {
       checkedOnclickHandler();
       dispatch(tickHabit(id));
+    } else {
+      notify();
     }
   };
 

@@ -6,7 +6,20 @@ import { addHabitId } from "../../actions/utilsAction";
 import { deleteHabit } from "../../actions/habits";
 import { useNavigate } from "react-router-dom";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./Habit.css";
 const Habit = ({ habit }) => {
+  const notify = () =>
+    toast.error("Can only select current date!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -62,9 +75,27 @@ const Habit = ({ habit }) => {
       </div>
       <div className="flex w-full flex-wrap mt-6 gap-2 justify-center items-center cursor-pointer">
         {habit.habitFrequency.map((freq, i) => (
-          <CheckBox name={i} value={freq} date={getDays()[i]} id={habit._id} />
+          <CheckBox
+            name={i}
+            value={freq}
+            date={getDays()[i]}
+            id={habit._id}
+            notify={notify}
+          />
         ))}
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
