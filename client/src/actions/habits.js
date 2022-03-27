@@ -33,3 +33,8 @@ export const deleteHabit = (habitId) => async (dispatch) => {
   await api.deleteHabit(habitId);
   dispatch({ type: DELETE_HABIT, payload: habitId });
 };
+
+export const tickHabit = (habitId) => async (dispatch) => {
+  const { data } = await api.tickHabit(habitId);
+  dispatch({ type: "TICK_HABIT", payload: data });
+};
