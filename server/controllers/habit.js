@@ -6,27 +6,31 @@ const getCurrentDate = () => {
 };
 
 export const getHabits = async (req, res) => {
-  try {
-    const response = await habitModel.find();
+  const { userId } = req;
+  console.log(userId);
 
+  try {
+    const response = await habitModel.find({ creator: userId });
+    console.log(response);
     res.status(200).json(response);
   } catch (err) {
-    console.log(err);
+    err;
   }
 };
 
 export const createHabit = async (req, res) => {
+  const { userId } = req;
   const data = req.body;
   const dates = req.body.dates;
 
   try {
-    const newHabit = new habitModel({ ...data, dates });
-    console.log(newHabit);
+    const newHabit = new habitModel({ ...data, creator: userId, dates });
+    newHabit;
     const response = await newHabit.save();
-    console.log(response);
+    response;
     res.status(200).json(response);
   } catch (err) {
-    console.log(err);
+    err;
   }
 };
 
@@ -43,7 +47,7 @@ export const editHabit = async (req, res) => {
     });
     res.status(200).json(habit);
   } catch (err) {
-    console.log(err.message);
+    err.message;
   }
 };
 
@@ -57,32 +61,43 @@ export const deleteHabit = async (req, res) => {
     await habitModel.findByIdAndRemove(_id);
     res.status(200).send({ message: "Deleted Successfully" });
   } catch (err) {
-    console.log(err);
+    err;
   }
 };
 
 export const tickHabit = async (req, res) => {
   const { id: _id } = req.params;
+  const nowDate = Object.keys(req.body)[0];
+  nowDate;
 
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).send({ message: "Invalid habit" });
   }
 
   try {
-    const date = getCurrentDate();
     const data = await habitModel.findById(_id);
 
-    const result = data.dates.map((da) =>
-      da[date] === undefined ? da : { [date]: !da[date] }
+    const habitDates = data.dates;
+
+    const isDatePresent = habitDates.find((date) => date.date == nowDate);
+
+    const updatedDates = isDatePresent
+      ? habitDates
+      : [...habitDates, { date: nowDate, isChecked: false }];
+
+    const result = updatedDates.map((da) =>
+      da.date !== nowDate ? da : { date: nowDate, isChecked: !da.isChecked }
     );
+
+    console.log(result);
 
     const habit = await habitModel.findByIdAndUpdate(
       _id,
       { dates: result },
       { new: true }
     );
-    console.log(habit);
-    res.status(204).json(habit);
+    habit;
+    res.status(200).json(habit);
   } catch (e) {
     res.status(404).json({ message: e.message });
   }

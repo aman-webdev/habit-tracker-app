@@ -1,16 +1,37 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000/habit";
+const API = axios.create({ baseURL: "http://localhost:5000" });
 
-export const getHabits = () => axios.get(URL);
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("user")) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("user")).token
+    }`;
+  }
+  return req;
+});
 
-export const createHabit = (habitData) => axios.post(URL, habitData);
-
-export const editHabit = (habitId, habitData) =>
-  axios.patch(`${URL}/edit/${habitId}`, habitData);
-
-export const deleteHabit = (habitId) => {
-  axios.delete(`${URL}/delete/${habitId}`);
+export const getHabits = () => {
+  return API.get("/habit");
 };
 
-export const tickHabit = (habitId) => axios.patch(`${URL}/tick/${habitId}`);
+export const createHabit = (habitData) => API.post("/habit", habitData);
+
+export const editHabit = (habitId, habitData) =>
+  API.patch(`/habit/edit/${habitId}`, habitData);
+
+export const deleteHabit = (habitId) => {
+  API.delete(`/habit/delete/${habitId}`);
+};
+
+export const tickHabit = (habitId, nowDate) => {
+  return API.patch(`/habit/tick/${habitId}`, nowDate);
+};
+
+export const signin = (data) => {
+  return API.post("/user/signin", data);
+};
+
+export const signup = (data) => {
+  return API.post("/user/signup", data);
+};

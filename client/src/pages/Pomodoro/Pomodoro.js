@@ -12,11 +12,11 @@ const Pomodoro = () => {
   const pomodoroTimerHandler = () => {
     const currentTime = new Date().toTimeString().split(":");
     const currentTimeMin = new Date().getTime();
-    console.log(currentTime);
+
     let hours = parseInt(currentTime[0]);
     let minutes = parseInt(currentTime[1]);
     let seconds = parseInt(currentTime[2].split(" ")[0]);
-    console.log(minutes, hours, seconds);
+
     let cooldownTime;
     const time = new Date().toDateString();
 
@@ -37,15 +37,15 @@ const Pomodoro = () => {
     }
 
     cooldownTime = new Date(`${time} ${hours}:${minutes}:${seconds}`).getTime();
-    console.log(cooldownTime);
+
     setInterval(() => {
       const cur = new Date().getTime();
       const totalTime = cooldownTime - currentTimeMin;
-      console.log(cooldownTime, currentTimeMin);
+
       const timeLeft = cooldownTime - cur;
 
       const percentage = 100 - (timeLeft / totalTime) * 100;
-      console.log(percentage);
+
       setPercentage(percentage.toFixed(1));
       if (timeLeft < 0) {
       }

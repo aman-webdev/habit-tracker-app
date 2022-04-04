@@ -1,4 +1,5 @@
 import express from "express";
+import auth from "../middlewares/auth.js";
 import {
   getHabits,
   createHabit,
@@ -8,9 +9,9 @@ import {
 } from "../controllers/habit.js";
 
 const router = express.Router();
-router.get("/", getHabits);
-router.post("/", createHabit);
-router.patch("/edit/:id", editHabit);
-router.patch("/tick/:id", tickHabit);
-router.delete("/delete/:id", deleteHabit);
+router.get("/", auth, getHabits);
+router.post("/", auth, createHabit);
+router.patch("/edit/:id", auth, editHabit);
+router.patch("/tick/:id", auth, tickHabit);
+router.delete("/delete/:id", auth, deleteHabit);
 export default router;

@@ -7,7 +7,6 @@ import {
 import * as api from "../api/habit";
 
 export const createHabit = (habitData) => async (dispatch) => {
-  console.log(habitData);
   try {
     const { data } = await api.createHabit(habitData);
     dispatch({ type: ADD_HABIT, payload: data });
@@ -15,10 +14,13 @@ export const createHabit = (habitData) => async (dispatch) => {
     console.log(err);
   }
 };
-export const getHabits = () => async (dispatch) => {
+export const getHabits = (setIsLoading) => async (dispatch) => {
   try {
+    console.log("first");
     const { data } = await api.getHabits();
+    console.log("first", data);
     dispatch({ type: GET_HABIT, payload: data });
+    setIsLoading(false);
   } catch (err) {
     console.log(err);
   }
@@ -34,7 +36,8 @@ export const deleteHabit = (habitId) => async (dispatch) => {
   dispatch({ type: DELETE_HABIT, payload: habitId });
 };
 
-export const tickHabit = (habitId) => async (dispatch) => {
-  const { data } = await api.tickHabit(habitId);
+export const tickHabit = (habitId, nowDate) => async (dispatch) => {
+  const { data } = await api.tickHabit(habitId, nowDate);
+
   dispatch({ type: "TICK_HABIT", payload: data });
 };

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createHabit, editHabit } from "../actions/habits";
 import { addHabitId } from "../actions/utilsAction";
 import { useDispatch, useSelector } from "react-redux";
-import { getDaysInMonth } from "../utils/getDates";
+import { getDaysInMonth, getDaysInWeek } from "../utils/getDates";
 
 const CreateHabit = () => {
   const navigate = useNavigate();
@@ -15,16 +15,10 @@ const CreateHabit = () => {
     habitName: "",
     habitDescription: "",
     habitFrequency: [0, 0, 0, 0, 0, 0, 0],
-    dates: {},
+    dates: [],
   });
 
   const { selectedHabit } = useSelector((state) => state.utils);
-
-  useEffect(() => {
-    if (selectedHabit.habitName) {
-      setHabitData(selectedHabit);
-    }
-  }, [selectedHabit]);
 
   const customStyles = {
     content: {
@@ -73,14 +67,16 @@ const CreateHabit = () => {
     const date = new Date();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    return getDaysInMonth(month, year);
+    return getDaysInWeek();
   };
-  console.log(habitData);
 
   useEffect(() => {
     const dates = calculateDates();
     setHabitData({ ...habitData, dates });
-  }, []);
+    if (selectedHabit.dates) {
+      setHabitData(selectedHabit);
+    }
+  }, [selectedHabit]);
 
   if (!isOpen) return null;
   return (
@@ -231,7 +227,7 @@ const CreateHabit = () => {
           type="submit"
           className="mx-auto block  bg-[#7e2d92] text-white py-3 px-8 rounded-md "
         >
-          Create Habit
+          {selectedHabit.dates ? "Edit Habit" : " Create Habit"}
         </button>
       </form>
     </Modal>

@@ -1,14 +1,16 @@
-import { ADD_HABIT_ID } from "../utils/constants";
+import { ADD_HABIT_ID, IS_LOGGED_IN } from "../utils/constants";
 
 const INIT_STATE = {
   selectedHabit: {},
+  isLoggedIn: false,
 };
 
 const utils = (state = INIT_STATE, action) => {
-  console.log(action.payload, "red");
   switch (action.type) {
     case ADD_HABIT_ID:
       return { ...state, selectedHabit: action.payload };
+    case IS_LOGGED_IN:
+      return { ...state, isLoggedIn: !state.isLoggedIn };
     default:
       return state;
   }

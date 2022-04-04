@@ -1,23 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { tickHabit } from "../../actions/habits";
-const Checkbox = ({ name, value, date, id, notify }) => {
+import moment from "moment";
+
+const Checkbox = ({ value, date, id, notify, dates }) => {
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    const renderIsChecked = () => {
+      const obj = dates.find((d) => d.date === date);
+      if (obj) {
+        setIsChecked(obj.isChecked);
+      }
+    };
+    renderIsChecked();
+  }, [dates, date]);
 
   const checkedOnclickHandler = () => {
     setIsChecked(!isChecked);
   };
 
   const updateHabit = () => {
-    const nowDate = new Date().toDateString();
+    const nowDate = moment().format("ll");
 
-    if (nowDate.includes(date)) {
-      checkedOnclickHandler();
-      dispatch(tickHabit(id));
-    } else {
-      notify();
-    }
+    // if (nowDate === moment(date).format("ll")) {
+    checkedOnclickHandler();
+    dispatch(tickHabit(id, date));
+    // } else {
+    // notify();
+    // }
   };
 
   return (
@@ -59,7 +71,8 @@ const Checkbox = ({ name, value, date, id, notify }) => {
           width="80%"
           height="80%"
           fill="none"
-          stroke="#160040"
+          stroke="white"
+          strokeWidth="3"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -71,7 +84,9 @@ const Checkbox = ({ name, value, date, id, notify }) => {
           ></path>
         </svg>
       )}
-      <p className="text-xs text-[#fff] opacity-70 my-2">{date}</p>
+      <p className="text-xs text-[#fff] opacity-70 my-2 w-full">
+        {moment(date).format("ll")}
+      </p>
     </button>
   );
 };

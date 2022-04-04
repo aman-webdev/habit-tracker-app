@@ -1,0 +1,4 @@
+.progress-main-container {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 330px));
+  grid-gap: 1rem;
+}

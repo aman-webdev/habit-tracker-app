@@ -14,6 +14,7 @@ const habitSchema = mongoose.Schema({
   habitDescription: String,
   habitFrequency: [Number],
   dates: { type: Array },
+  creator: { type: String, required: true },
 });
 
 export default mongoose.model("Habit", habitSchema);
