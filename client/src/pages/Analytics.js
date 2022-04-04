@@ -39,7 +39,11 @@ const Analytics = () => {
 
   return (
     <div className="w-5/6 px-8">
-      <Header setIsGraphOpen={setIsGraphOpen} isGraphOpen={isGraphOpen} />
+      <Header
+        setIsGraphOpen={setIsGraphOpen}
+        isGraphOpen={isGraphOpen}
+        completedHabits={completedHabits}
+      />
 
       {isLoading ? (
         <div className="w-full h-5/6 flex justify-center items-center">

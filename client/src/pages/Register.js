@@ -72,7 +72,7 @@ const Register = () => {
   return (
     <div className="w-full h-screen flex justify-between px-10 items-center  bg-[#F5F5F5]">
       <div className="text-center w-1/2 ">
-        <h1 className="text-3xl  uppercase mb-3 text-[#652675]">
+        <h1 className="text-2xl  mb-3 text-[#652675]">
           Start tracking Habits!
         </h1>
         {/* <p className="text-[#652675] text-sm">

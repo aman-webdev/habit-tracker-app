@@ -4,13 +4,15 @@ import renderDate from "../utils/renderDate";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLoginState } from "../actions/utilsAction";
+import { motion } from "framer-motion";
 
-const Header = ({ isGraphOpen, setIsGraphOpen }) => {
+const Header = ({ isGraphOpen, setIsGraphOpen, completedHabits }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
 
   const { result } = useSelector((state) => state.user);
+  const { habits } = useSelector((state) => state);
 
   const logoutHandler = () => {
     dispatch({ type: "LOGOUT" });
@@ -18,8 +20,19 @@ const Header = ({ isGraphOpen, setIsGraphOpen }) => {
     navigate("/");
   };
 
+  const isAnyOneHabitCompleted = () => {
+    let isCompleted = false;
+
+    for (let i = 0; i < completedHabits.length; i++) {
+      if (completedHabits[i].completed > 0) {
+        isCompleted = true;
+      }
+    }
+    return isCompleted;
+  };
+
   return (
-    <div className="pt-4 flex justify-between items-center w-full h-1/6">
+    <motion.div className="pt-4 flex justify-between items-center w-full h-1/6">
       <div>
         <p className="text-2xl font-medium text-[#3E1D46]">
           {location.pathname === "/analytics"
@@ -43,7 +56,9 @@ const Header = ({ isGraphOpen, setIsGraphOpen }) => {
         >
           Add New Habit
         </button>
-        {location.pathname === "/analytics" ? (
+        {location.pathname === "/analytics" &&
+        habits.length &&
+        isAnyOneHabitCompleted() ? (
           <button
             onClick={() => setIsGraphOpen(!isGraphOpen)}
             className="bg-[#0F1422] text-white  py-3 px-4 text-sm rounded-md"
@@ -59,7 +74,7 @@ const Header = ({ isGraphOpen, setIsGraphOpen }) => {
           </button>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -8,6 +8,7 @@ import { changeLoginState } from "../actions/utilsAction";
 import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as LoginIllustration } from "../assets/login.svg";
 import { notify, Toastify } from "../utils/notify";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -74,7 +75,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-between px-10 items-center  bg-[#F5F5F5]">
+    <motion.div className="w-full h-screen flex justify-between px-10 items-center  bg-[#F5F5F5]">
       <div className="text-center w-1/2 ">
         <h1 className="text-2xl font-medium mb-3 text-[#652675]">
           Welcome Back!
@@ -100,7 +101,7 @@ const Login = () => {
         </form>
         <p className="text-sm text-[#652675] opacity-70 mt-5">Or</p>
         <GoogleLogin
-          clientId="25061229354-57cvqfe47cuasvkopjr3g8dbpmvho66f.apps.googleusercontent.com"
+          clientId={process.env.REACT_APP_CLIENT_ID}
           onSuccess={googleSuccess}
           onFailure={googleFailure}
           cookiePolicy="single_host_origin"
@@ -133,7 +134,7 @@ const Login = () => {
         <LoginIllustration />
       </div>
       <Toastify />
-    </div>
+    </motion.div>
   );
 };
 
