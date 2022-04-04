@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.Toastify__toast--error {
+  font-size: 14px;
+  width: 350px;
+}
+
 .habits-container {
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(260px, 330px));

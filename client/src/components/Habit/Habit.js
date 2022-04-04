@@ -15,7 +15,7 @@ const Habit = ({ habit, index }) => {
   const notify = () =>
     toast.error("Can only select current date!", {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -90,7 +90,7 @@ const Habit = ({ habit, index }) => {
 
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

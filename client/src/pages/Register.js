@@ -6,6 +6,7 @@ import { signup } from "../actions/userAction";
 import Input from "../components/Input";
 import { changeLoginState } from "../actions/utilsAction";
 import AuthButton from "../components/AuthButton";
+import { notify, Toastify } from "../utils/notify";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -21,15 +22,51 @@ const Register = () => {
 
   const onRegisterSubmit = (e) => {
     e.preventDefault();
-    dispatch(signup(registerData));
-    dispatch(changeLoginState());
-    navigate("/dashboard");
-    console.log(registerData);
+    const validationResult = validateFields();
+    console.log(validationResult);
+    if (validationResult) {
+      notify(validationResult);
+    } else {
+      dispatch(signup(registerData));
+      dispatch(changeLoginState());
+      navigate("/dashboard");
+      console.log(registerData);
+    }
   };
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setRegisterData({ ...registerData, [name]: value });
+  };
+
+  const validateFields = () => {
+    const { email, password, firstName, lastName, confirmPassword } =
+      registerData;
+    if (!firstName) return "Please enter First Name";
+    if (!lastName) return "Please enterLast Name";
+
+    const checkForNumbersFirst = /\d/.test(firstName);
+    const checkForNumbersLast = /\d/.test(lastName);
+
+    if (checkForNumbersFirst) return "First Name cannot have numbers";
+    if (checkForNumbersLast) return "Last Name cannot have numbers";
+
+    if (!email) {
+      return "Please enter Email";
+    }
+    if (!email.includes("@")) {
+      return "Please enter Proper Email";
+    }
+
+    if (!password) {
+      return "Please enter Password";
+    }
+
+    if (password.length < 6)
+      return "Password must be greater than 6 characters";
+
+    if (password !== confirmPassword)
+      return "Password and Confirm Password does not match! ";
   };
 
   return (
@@ -84,6 +121,7 @@ const Register = () => {
       <div className="overflow-hidden">
         <RegisterIllustration />
       </div>
+      <Toastify />
     </div>
   );
 };

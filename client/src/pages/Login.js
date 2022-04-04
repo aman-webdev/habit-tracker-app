@@ -7,6 +7,7 @@ import AuthButton from "../components/AuthButton";
 import { changeLoginState } from "../actions/utilsAction";
 import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as LoginIllustration } from "../assets/login.svg";
+import { notify, Toastify } from "../utils/notify";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -31,10 +32,16 @@ const Login = () => {
 
   const onLoginSubmit = async (e) => {
     e.preventDefault();
-    try {
-      dispatch(signin(loginData));
-    } catch (e) {
-      console.log(e);
+    const validationResult = validateFields();
+    console.log(validationResult);
+    if (!validationResult) {
+      try {
+        dispatch(signin(loginData));
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      notify(`Please enter ${validationResult}`);
     }
   };
 
@@ -49,6 +56,21 @@ const Login = () => {
 
   const googleFailure = (e) => {
     console.log(e);
+  };
+
+  const validateFields = () => {
+    const { email, password } = loginData;
+    if (!email) {
+      return "Email";
+    }
+    if (!email.includes("@")) {
+      return "Proper Email";
+    }
+    if (!password) {
+      return "Password";
+    }
+    console.log(password.length);
+    if (password.length < 6) return "Password greater than 6 characters";
   };
 
   return (
@@ -110,6 +132,7 @@ const Login = () => {
       <div className="overflow-hidden">
         <LoginIllustration />
       </div>
+      <Toastify />
     </div>
   );
 };
