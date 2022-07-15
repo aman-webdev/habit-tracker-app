@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://pomo-habit-tracker.herokuapp.com/",
+  baseURL: "https://habito-back-end.herokuapp.com/",
 });
 
 API.interceptors.request.use((req) => {
