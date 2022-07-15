@@ -75,8 +75,8 @@ const Login = () => {
   };
 
   return (
-    <motion.div className="w-full h-screen flex justify-between px-10 items-center  bg-[#F5F5F5]">
-      <div className="text-center w-1/2 ">
+    <motion.div className="w-full h-screen flex justify-center md:justify-between sm:px-10 px-2 items-center  bg-[#F5F5F5] overflow-hidden">
+      <div className="text-center  md:w-1/2 w-full z-10 overflow-hidden">
         <h1 className="text-2xl font-medium mb-3 text-[#652675]">
           Welcome Back!
         </h1>
@@ -109,7 +109,7 @@ const Login = () => {
             <button
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
-              className="mt-6 mx-auto py-2 px-8 bg-white rounded-md hover:border-[#9f49b4c2] transition-colors hover:border-1"
+              className="mt-6 mx-auto py-2 px-8 cursor-pointer bg-white rounded-md hover:border-[#9f49b4c2] transition-colors hover:border-1"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -130,8 +130,8 @@ const Login = () => {
           )}
         />
       </div>
-      <div className="overflow-hidden">
-        <LoginIllustration />
+      <div className="overflow-hidden   absolute md:relative opacity-20 md:opacity-100">
+        <LoginIllustration className="overflow-hidden w-full" />
       </div>
       <Toastify />
     </motion.div>

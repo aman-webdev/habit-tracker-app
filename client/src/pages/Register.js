@@ -70,8 +70,8 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-between px-10 items-center  bg-[#F5F5F5]">
-      <div className="text-center w-1/2 ">
+    <div className="w-full h-screen flex  justify-center md:justify-between px-4 md:px-10 items-center  bg-[#F5F5F5]">
+      <div className="text-center md:w-1/2 w-full z-10 ">
         <h1 className="text-2xl  mb-3 text-[#652675]">
           Start tracking Habits!
         </h1>
@@ -118,8 +118,8 @@ const Register = () => {
           </Link>
         </form>
       </div>
-      <div className="overflow-hidden">
-        <RegisterIllustration />
+      <div className="overflow-hidden md:relative absolute opacity-20 md:opacity-100">
+        <RegisterIllustration className="overflow-hidden w-full md:w-3/4" />
       </div>
       <Toastify />
     </div>
