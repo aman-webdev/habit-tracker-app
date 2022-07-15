@@ -19,10 +19,15 @@ function RequireAuth({ children, isLoggedIn }) {
 
 function App() {
   const { token } = useSelector((state) => state.user);
+  const { isNavOpen } = useSelector((state) => state.utils);
 
   return (
     <BrowserRouter>
-      <div className="App flex md:flex-row flex-col   w-full  h-screen">
+      <div
+        className={`App flex md:flex-row flex-col ${
+          isNavOpen && "overflow-hidden"
+        }   w-full  h-screen`}
+      >
         {token && <Sidebar />}
         {token && <MobileHeader />}
 

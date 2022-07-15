@@ -68,7 +68,7 @@ const MobileHeader = () => {
             <div className="line h-0.5 rounded-sm opacity-40 w-1/5 mt-5 bg-slate-100"></div>
           </div>
           <div className="flex flex-col justify-between h-full pb-8 w-full">
-            <div className="links flex flex-col text-lg text-center gap-10">
+            <div className="links flex flex-col text-md font-light text-center gap-10">
               <Link onClick={() => dispatch(ChangeNavState())} to="/">
                 Dashboard
               </Link>

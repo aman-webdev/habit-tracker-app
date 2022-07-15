@@ -46,7 +46,7 @@ const Analytics = () => {
       />
 
       {isLoading ? (
-        <div className="w-full md:h-5/6 my-auto relative top-1/2 flex justify-center items-center">
+        <div className="w-full md:h-5/6  relative top-1/2 md:top-auto  flex justify-center items-center">
           <PuffLoader
             size={200}
             loading={isLoading}
