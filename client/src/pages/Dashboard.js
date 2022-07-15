@@ -4,7 +4,7 @@ import Header from "../components/Header";
 
 const Dashboard = () => {
   return (
-    <div className=" w-5/6 px-8 ">
+    <div className="  w-full md:w-5/6 md:px-8 px-6 ">
       <Header />
       <Habits />
     </div>

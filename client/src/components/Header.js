@@ -32,15 +32,15 @@ const Header = ({ isGraphOpen, setIsGraphOpen, completedHabits }) => {
   };
 
   return (
-    <motion.div className="pt-4 flex justify-between items-center w-full h-1/6">
-      <div>
-        <p className="text-2xl font-medium text-[#3E1D46]">
+    <motion.div className="md:pt-4  flex justify-between items-center w-full h-1/6">
+      <div className="w-full mt-4">
+        <p className="text-2xl font-medium md:text-left w-full  text-center text-[#3E1D46]">
           {location.pathname === "/analytics"
             ? "Analyze your habits"
             : `Hello, ${result.firstName || result.name.split(" ")[0]}`}
         </p>
         <p
-          className={`text-sm opacity-60 mt-1 ${
+          className={`text-sm opacity-60 mt-1 md:text-left text-center w-full ${
             location.pathname === "/analytics" ? "mt-4" : ""
           }`}
         >
@@ -52,7 +52,9 @@ const Header = ({ isGraphOpen, setIsGraphOpen, completedHabits }) => {
       <div className="flex gap-4">
         <button
           onClick={() => navigate("/habit")}
-          className="bg-[#0F1422] text-white  py-3 px-4 text-sm rounded-md"
+          className={`bg-[#0F1422] text-white hidden md:block py-3 px-4 text-sm rounded-md 
+          
+          `}
         >
           Add New Habit
         </button>
@@ -61,14 +63,14 @@ const Header = ({ isGraphOpen, setIsGraphOpen, completedHabits }) => {
         isAnyOneHabitCompleted() ? (
           <button
             onClick={() => setIsGraphOpen(!isGraphOpen)}
-            className="bg-[#0F1422] text-white  py-3 px-4 text-sm rounded-md"
+            className="bg-[#0F1422] text-white hidden md:block py-3 px-4 text-sm rounded-md"
           >
             View Graph
           </button>
         ) : (
           <button
             onClick={logoutHandler}
-            className="bg-[#0F1422] text-white  py-3 px-4 text-sm rounded-md"
+            className="bg-[#0F1422] text-white hidden md:block  py-3 px-4 text-sm rounded-md"
           >
             Logout
           </button>

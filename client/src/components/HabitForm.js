@@ -91,10 +91,14 @@ const CreateHabit = () => {
 
   if (!isOpen) return null;
   return (
-    <motion.div layout>
+    <div className="relative">
       {" "}
-      <Modal onRequestClose={closeModal} isOpen={isOpen} style={customStyles}>
-        <h3 className="text-xl my-8 text-[#3E1D46] font-medium">
+      <Modal
+        onRequestClose={closeModal}
+        isOpen={isOpen}
+        className="w-11/12 md:w-1/2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-none outline-none   bg-white py-8"
+      >
+        <h3 className="text-xl my-8 text-center text-[#3E1D46] font-medium">
           {selectedHabit.habitName ? "Edit habit" : "Add habit"}
         </h3>
         <form className="w-full" onSubmit={onSubmitHandler}>
@@ -243,7 +247,7 @@ const CreateHabit = () => {
         </form>
         <Toastify />
       </Modal>
-    </motion.div>
+    </div>
   );
 };
 

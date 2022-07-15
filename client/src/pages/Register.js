@@ -118,8 +118,8 @@ const Register = () => {
           </Link>
         </form>
       </div>
-      <div className="overflow-hidden md:relative absolute opacity-20 md:opacity-100">
-        <RegisterIllustration className="overflow-hidden w-full md:w-3/4" />
+      <div className="overflow-hidden md:relative absolute opacity-20 md:opacity-100  md:mr-24">
+        <RegisterIllustration className="overflow-hidden w-full" />
       </div>
       <Toastify />
     </div>

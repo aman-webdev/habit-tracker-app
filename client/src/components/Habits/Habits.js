@@ -19,7 +19,7 @@ const Habits = () => {
   return (
     <div className=" w-full h-5/6 ">
       {isLoading ? (
-        <div className="flex justify-center items-center w-full my-auto h-full ">
+        <div className="flex  relative top-1/2  justify-center items-center w-full my-auto h-full ">
           <PuffLoader
             size={200}
             loading={isLoading}

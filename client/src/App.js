@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import "./App.css";
 import Register from "./pages/Register";
 import { Navigate } from "react-router-dom";
+import MobileHeader from "./components/MobileHeader";
 
 function RequireAuth({ children, isLoggedIn }) {
   console.log(isLoggedIn);
@@ -21,8 +22,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App flex   w-full  h-screen">
+      <div className="App flex md:flex-row flex-col   w-full  h-screen">
         {token && <Sidebar />}
+        {token && <MobileHeader />}
 
         <Routes>
           <Route path="/" element={<Login />} />

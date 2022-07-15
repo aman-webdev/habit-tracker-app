@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import HabitPercentage from "../components/HabitPercentage/HabitPercentage";
-import { ReactComponent as AnalyticsIllustration } from "../assets/analytics-illustration.svg";
+import { ReactComponent as AnalyticsIllustration } from "../assets/analyse.svg";
 import caluclateHabitPercentage from "../utils/completedHabitPercentage";
 import { useSelector, useDispatch } from "react-redux";
 import { getHabits } from "../actions/habits";
@@ -38,7 +38,7 @@ const Analytics = () => {
   }, [habits]);
 
   return (
-    <div className="w-5/6 px-8">
+    <div className="md:w-5/6 md:px-8 w-full  px-10">
       <Header
         setIsGraphOpen={setIsGraphOpen}
         isGraphOpen={isGraphOpen}
@@ -46,7 +46,7 @@ const Analytics = () => {
       />
 
       {isLoading ? (
-        <div className="w-full h-5/6 flex justify-center items-center">
+        <div className="w-full md:h-5/6 my-auto relative top-1/2 flex justify-center items-center">
           <PuffLoader
             size={200}
             loading={isLoading}
@@ -65,10 +65,10 @@ const Analytics = () => {
               <HabitPercentage habit={habit} index={index} />
             ))
           ) : (
-            <div className="w-full text-center">
+            <div className="w-full overflow-hidden text-center">
               <AnalyticsIllustration className="mx-auto" />
               <Link to="/habit">
-                <p className="mt-6 hover:opacity-80 transition-opacity text-[#652675] text-md">
+                <p className="mt-6 mb-4 hover:opacity-80 transition-opacity text-[#652675] text-md">
                   Add Habits to get Started
                 </p>
               </Link>
