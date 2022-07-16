@@ -29,8 +29,8 @@ const Habits = () => {
         </div>
       ) : (
         <div
-          className={`habits-container w-full ${
-            habits.length ? "grid" : "block"
+          className={`habits-container  grid items-center justify-center align-middle  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  w-full gap-4 ${
+            habits.length ? "grid align-middle " : "block"
           }`}
         >
           {habits.length ? (
