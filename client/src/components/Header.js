@@ -32,9 +32,9 @@ const Header = ({ isGraphOpen, setIsGraphOpen, completedHabits }) => {
   };
 
   return (
-    <motion.div className="md:pt-4  flex justify-between items-center w-full h-1/6">
-      <div className="w-full mt-4">
-        <p className="text-2xl font-medium md:text-left w-full  text-center text-[#3E1D46]">
+    <motion.div className="md:pt-4 text-center   flex justify-between items-center w-full mb-6">
+      <div className="w-full mt-4 ">
+        <p className="text-2xl font-medium md:text-left w-full mx-auto  text-center text-[#3E1D46]">
           {location.pathname === "/analytics"
             ? "Analyze your habits"
             : `Hello, ${result.firstName || result.name.split(" ")[0]}`}
@@ -49,10 +49,10 @@ const Header = ({ isGraphOpen, setIsGraphOpen, completedHabits }) => {
             : `Today is ${renderDate()}`}
         </p>
       </div>
-      <div className="flex gap-4">
+      <div className=" gap-4  w-full md:flex hidden  justify-end">
         <button
           onClick={() => navigate("/habit")}
-          className={`bg-[#0F1422] text-white hidden md:block py-3 px-4 text-sm rounded-md 
+          className={`bg-[#0F1422] text-white hidden md:block py-5 px-4 text-sm rounded-md 
           
           `}
         >
@@ -63,14 +63,14 @@ const Header = ({ isGraphOpen, setIsGraphOpen, completedHabits }) => {
         isAnyOneHabitCompleted() ? (
           <button
             onClick={() => setIsGraphOpen(!isGraphOpen)}
-            className="bg-[#0F1422] text-white hidden md:block py-3 px-4 text-sm rounded-md"
+            className="bg-[#0F1422] text-white hidden md:block py-5 px-4 text-sm rounded-md"
           >
             View Graph
           </button>
         ) : (
           <button
             onClick={logoutHandler}
-            className="bg-[#0F1422] text-white hidden md:block  py-3 px-4 text-sm rounded-md"
+            className="bg-[#0F1422] text-white hidden md:block  py-5 px-4 text-sm rounded-md"
           >
             Logout
           </button>

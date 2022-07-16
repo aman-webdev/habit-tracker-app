@@ -19,7 +19,7 @@ const Sidebar = () => {
   console.log(result);
 
   return (
-    <div className="w-1/6 hidden md:block text-center my-8 border-r-1.5 border-solid border-[#E1DDE3] border-opacity-80 ">
+    <div className="lg:w-1/6 md:w-1/4 hidden md:block text-center my-8 border-r-1.5 border-solid border-[#E1DDE3] border-opacity-80 ">
       <div className="logo mx-auto w-1/2 text-center flex font-semibold items-center justify-center text-lg text-[#310E3A] ">
         <Logo />
         <p>habito</p>

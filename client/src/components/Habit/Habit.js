@@ -32,7 +32,7 @@ const Habit = ({ habit, index }) => {
 
   return (
     <div
-      className={` ${bg.accent} md:w-full sm:w-2/3 md:mx-0 mx-auto  mt-10 p-4 px-6 rounded-md`}
+      className={` ${bg.accent} md:w-full sm:w-full w-3/4 md:mx-0 mx-auto  mt-2 p-4 px-6 rounded-md`}
     >
       <div className="flex justify-between items-center w-full">
         <p className="text-white text-lg font-medium">
