@@ -73,6 +73,12 @@ const CreateHabit = () => {
       } else {
         dispatch(createHabit(habitData));
       }
+      setHabitData({
+        habitName: "",
+        habitDescription: "",
+        habitFrequency: [0, 0, 0, 0, 0, 0, 0],
+        dates: [],
+      });
       navigate("/");
     }
   };
