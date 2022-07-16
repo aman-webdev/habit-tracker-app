@@ -106,7 +106,7 @@ const CreateHabit = () => {
             <input
               type="text"
               name="habitName"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               autoComplete="off"
               value={habitData.habitName}
@@ -114,7 +114,7 @@ const CreateHabit = () => {
             />
             <label
               for="habitName"
-              class="absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:accent-[#8d2ba5] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:accent-[#8d2ba5] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Habit Name
             </label>
@@ -123,7 +123,7 @@ const CreateHabit = () => {
             <input
               type="text"
               name="habitDescription"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               autoComplete="off"
               value={habitData.habitDescription}
@@ -131,14 +131,14 @@ const CreateHabit = () => {
             />
             <label
               for="habitName"
-              class="absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:accent-[#8d2ba5] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:accent-[#8d2ba5] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Habit Description
             </label>
           </div>
-          <div className="w-1/2 my-12 mx-auto">
-            <div className="w-full flex">
-              <div className="text-center">
+          <div className="  w-1/2 my-12 mx-auto">
+            <div className="w-full  gap-4 flex-wrap flex items-center justify-center ">
+              <div className="text-center flex flex-col gap-2 content-center justify-center items-center ">
                 <input
                   checked={habitData.habitFrequency[0]}
                   type="checkbox"
@@ -152,7 +152,7 @@ const CreateHabit = () => {
                   Sun
                 </label>
               </div>
-              <div className="text-center">
+              <div className="text-center flex flex-col gap-2 content-center justify-center items-center ">
                 <input
                   type="checkbox"
                   checked={habitData.habitFrequency[1]}
@@ -166,7 +166,7 @@ const CreateHabit = () => {
                   Mon
                 </label>
               </div>
-              <div className="text-center">
+              <div className="text-center flex flex-col gap-2 content-center justify-center items-center ">
                 <input
                   type="checkbox"
                   checked={habitData.habitFrequency[2]}
@@ -180,7 +180,7 @@ const CreateHabit = () => {
                   Tue
                 </label>
               </div>
-              <div className="text-center">
+              <div className="text-center flex flex-col gap-2 content-center justify-center items-center ">
                 <input
                   type="checkbox"
                   checked={habitData.habitFrequency[3]}
@@ -194,7 +194,7 @@ const CreateHabit = () => {
                   Wed
                 </label>
               </div>
-              <div className="text-center">
+              <div className="text-center flex flex-col gap-2 content-center justify-center items-center ">
                 <input
                   type="checkbox"
                   checked={habitData.habitFrequency[4]}
@@ -208,7 +208,7 @@ const CreateHabit = () => {
                   Thur
                 </label>
               </div>
-              <div className="text-center">
+              <div className="text-center flex flex-col gap-2 content-center justify-center items-center ">
                 <input
                   type="checkbox"
                   onChange={onFrequencyChangeHandler}
@@ -222,7 +222,7 @@ const CreateHabit = () => {
                   Fri
                 </label>
               </div>
-              <div className="text-center">
+              <div className="text-center flex flex-col gap-2 content-center justify-center items-center ">
                 <input
                   type="checkbox"
                   onChange={onFrequencyChangeHandler}

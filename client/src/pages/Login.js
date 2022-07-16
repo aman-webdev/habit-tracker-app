@@ -85,11 +85,13 @@ const Login = () => {
           <Input
             value={loginData.email}
             name="email"
+            type="email"
             onChangeHandler={onChangeHandler}
             placeholder="Email"
           />
           <Input
             name="password"
+            type="password"
             value={loginData.password}
             onChangeHandler={onChangeHandler}
             placeholder="Password"

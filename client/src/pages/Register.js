@@ -82,18 +82,21 @@ const Register = () => {
         <form className="flex flex-col gap-3 mt-7" onSubmit={onRegisterSubmit}>
           <Input
             name="firstName"
+            type="text"
             value={registerData.firstName}
             onChangeHandler={onChangeHandler}
             placeholder="First Name"
           />
           <Input
             name="lastName"
+            type="text"
             value={registerData.lastName}
             onChangeHandler={onChangeHandler}
             placeholder="Last Name"
           />
           <Input
             name="email"
+            type="email"
             value={registerData.email}
             onChangeHandler={onChangeHandler}
             placeholder="Email"
