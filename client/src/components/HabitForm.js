@@ -79,7 +79,7 @@ const CreateHabit = () => {
         habitFrequency: [0, 0, 0, 0, 0, 0, 0],
         dates: [],
       });
-      navigate("/");
+      closeModal();
     }
   };
 
