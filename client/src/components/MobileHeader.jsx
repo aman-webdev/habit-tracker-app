@@ -77,7 +77,7 @@ const MobileHeader = () => {
               </Link>
               {/* <Link to="/analytics">Task List</Link> */}
             </div>
-            <div className="buttons w-3/4 flex mx-auto items-center gap-10">
+            <div className="buttons w-3/4 flex mx-auto items-center mb-4 gap-10">
               <button
                 onClick={() => buttonHandler()}
                 className={`text-black text-sm bg-white font-medium w-1/2  py-3 px-4 rounded-md 
