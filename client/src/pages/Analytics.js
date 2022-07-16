@@ -56,7 +56,7 @@ const Analytics = () => {
         </div>
       ) : (
         <div
-          className={`mt-10  progress-main-container grid gap-4  w-full  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ${
+          className={`mt-10  progress-main-container  gap-4  w-full  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ${
             completedHabits.length ? "grid" : "block"
           }`}
         >

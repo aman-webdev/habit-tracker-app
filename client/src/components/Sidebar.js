@@ -60,7 +60,7 @@ const Sidebar = () => {
           >
             <Analytics />
           </NavItem>
-          <NavItem
+          {/* <NavItem
             text="Task list"
             path="/tasks"
             setIsActiveNav={setIsActiveNav}
@@ -75,7 +75,7 @@ const Sidebar = () => {
             isActiveNav={isActiveNav}
           >
             <Home />
-          </NavItem>
+          </NavItem> */}
         </ul>
       </nav>
     </div>
