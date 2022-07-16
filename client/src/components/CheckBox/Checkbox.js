@@ -4,6 +4,7 @@ import { tickHabit } from "../../actions/habits";
 import moment from "moment";
 
 const Checkbox = ({ value, date, id, notify, dates }) => {
+  console.log(date);
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
 
@@ -85,7 +86,7 @@ const Checkbox = ({ value, date, id, notify, dates }) => {
         </svg>
       )}
       <p className="text-xs text-[#fff] opacity-70 my-2 w-full">
-        {moment(date).format("ll")}
+        {moment(date, "MM/DD/YYYY").format("ll")}
       </p>
     </button>
   );

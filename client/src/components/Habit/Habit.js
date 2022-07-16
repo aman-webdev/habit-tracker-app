@@ -78,16 +78,18 @@ const Habit = ({ habit, index }) => {
         </svg>
       </div>
       <div className="flex w-full flex-wrap mt-6 gap-3 justify-center items-center cursor-pointer">
-        {habit.habitFrequency.map((freq, i) => (
-          <CheckBox
-            name={i}
-            value={freq}
-            date={getDaysInWeek()[i].date}
-            id={habit._id}
-            notify={notify}
-            dates={habit.dates}
-          />
-        ))}
+        {habit.habitFrequency.map((freq, i) => {
+          return (
+            <CheckBox
+              name={i}
+              value={freq}
+              date={getDaysInWeek()[i].date}
+              id={habit._id}
+              notify={notify}
+              dates={habit.dates}
+            />
+          );
+        })}
       </div>
 
       <ToastContainer
