@@ -5,6 +5,9 @@
 
 ### ✨ [Demo](https://pomohabit.vercel.app/)
 
+![Animation](https://user-images.githubusercontent.com/78081991/179346883-1a210e6e-2bff-46ad-ad15-7a2a9555cefa.gif)
+
+
 ## Install
 
 ```sh
@@ -17,8 +20,6 @@ npm install
 cd client
 npm start
 
-cd server
-npm start
 ```
 
 ## Author
