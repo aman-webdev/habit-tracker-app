@@ -4,7 +4,6 @@ import { tickHabit } from "../../actions/habits";
 import moment from "moment";
 
 const Checkbox = ({ value, date, id, notify, dates }) => {
-  console.log(date);
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
 

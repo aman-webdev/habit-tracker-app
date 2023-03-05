@@ -24,7 +24,6 @@ const Register = () => {
     try{
       e.preventDefault();
       const validationResult = validateFields();
-      console.log(validationResult);
       if (validationResult) {
         notify(validationResult);
       } else {

@@ -13,7 +13,6 @@ import { Navigate } from "react-router-dom";
 import MobileHeader from "./components/MobileHeader";
 
 function RequireAuth({ children, isLoggedIn }) {
-  console.log(isLoggedIn);
   return isLoggedIn ? children : <Navigate to="/" replace />;
 }
 

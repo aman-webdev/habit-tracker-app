@@ -16,9 +16,7 @@ export const createHabit = (habitData) => async (dispatch) => {
 };
 export const getHabits = (setIsLoading) => async (dispatch) => {
   try {
-    console.log("first");
     const { data } = await api.getHabits();
-    console.log("first", data);
     dispatch({ type: GET_HABIT, payload: data });
     setIsLoading(false);
   } catch (err) {

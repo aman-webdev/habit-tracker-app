@@ -64,7 +64,7 @@ const Login = () => {
   };
 
   const validateFields = () => {
-    console.log("this called")
+
     const { email, password } = loginData;
     if (!email) {
       return "Email";
@@ -75,7 +75,6 @@ const Login = () => {
     if (!password) {
       return "Password";
     }
-    console.log(password.length);
     if (password.length < 6) return "Password greater than 6 characters";
   };
 

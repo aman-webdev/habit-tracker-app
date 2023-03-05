@@ -15,8 +15,7 @@ const Sidebar = () => {
     location.pathname.split("/")[1]?.slice(1);
 
   const [isActiveNav, setIsActiveNav] = useState(currentPage);
-  const { result } = useSelector((state) => state.user);
-  console.log(result);
+  const { result } = useSelector((state) => state.user)
 
   return (
     <div className="lg:w-1/6 md:w-1/4 hidden md:block text-center my-8 border-r-1.5 border-solid border-[#E1DDE3] border-opacity-80 ">

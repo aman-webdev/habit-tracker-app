@@ -7,11 +7,9 @@ const getCurrentDate = () => {
 
 export const getHabits = async (req, res) => {
   const { userId } = req;
-  console.log(userId);
 
   try {
     const response = await habitModel.find({ creator: userId });
-    console.log(response);
     res.status(200).json(response);
   } catch (err) {
     err;
@@ -89,7 +87,6 @@ export const tickHabit = async (req, res) => {
       da.date !== nowDate ? da : { date: nowDate, isChecked: !da.isChecked }
     );
 
-    console.log(result);
 
     const habit = await habitModel.findByIdAndUpdate(
       _id,
