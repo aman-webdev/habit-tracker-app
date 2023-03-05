@@ -21,17 +21,22 @@ const Register = () => {
   });
 
   const onRegisterSubmit = (e) => {
-    e.preventDefault();
-    const validationResult = validateFields();
-    console.log(validationResult);
-    if (validationResult) {
-      notify(validationResult);
-    } else {
-      dispatch(signup(registerData));
-      dispatch(changeLoginState());
-      navigate("/dashboard");
-      console.log(registerData);
+    try{
+      e.preventDefault();
+      const validationResult = validateFields();
+      console.log(validationResult);
+      if (validationResult) {
+        notify(validationResult);
+      } else {
+        dispatch(signup(registerData));
+        dispatch(changeLoginState());
+        navigate("/dashboard");
+      }
     }
+    catch(e){
+      console.log(e)
+    }
+   
   };
 
   const onChangeHandler = (e) => {

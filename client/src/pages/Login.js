@@ -12,16 +12,15 @@ import { motion } from "framer-motion";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [isLoading,setisLoading] = useState(false);
+  const [isGuest,setisGuest] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state);
-  console.log(user.result);
 
   useEffect(() => {
     if (user.token) {
-      console.log("first");
-
       navigate("/dashboard");
     }
   }, [dispatch, navigate, user]);
@@ -33,17 +32,22 @@ const Login = () => {
 
   const onLoginSubmit = async (e) => {
     e.preventDefault();
-    const validationResult = validateFields();
-    console.log(validationResult);
+
+    if(!isGuest){ 
+     const  validationResult = validateFields();
+
     if (!validationResult) {
       try {
-        dispatch(signin(loginData));
+        setisLoading(true)
+        dispatch(signin(loginData,setisLoading));
       } catch (e) {
         console.log(e);
+        setisLoading(false);
       }
     } else {
       notify(`Please enter ${validationResult}`);
     }
+  }
   };
 
   const googleSuccess = (res) => {
@@ -52,7 +56,7 @@ const Login = () => {
     dispatch({ type: "AUTH", payload: { result, token } });
     dispatch(changeLoginState());
     navigate("/dashboard");
-    console.log(res);
+   
   };
 
   const googleFailure = (e) => {
@@ -60,6 +64,7 @@ const Login = () => {
   };
 
   const validateFields = () => {
+    console.log("this called")
     const { email, password } = loginData;
     if (!email) {
       return "Email";
@@ -73,6 +78,20 @@ const Login = () => {
     console.log(password.length);
     if (password.length < 6) return "Password greater than 6 characters";
   };
+
+  const loginAsGuest=async()=>{
+    setisGuest(true);
+    const email = process.env.REACT_APP_GUEST_EMAIL;
+    const password = process.env.REACT_APP_GUEST_PASSWORD;
+ try {
+        setisLoading(true)
+        dispatch(signin({email,password},setisLoading));
+      } catch (e) {
+        console.log(e);
+        setisLoading(false);
+        setisGuest(false);
+      }
+  }
 
   return (
     <motion.div className="w-full h-screen flex justify-center md:justify-between sm:px-10 px-2 items-center  bg-[#F5F5F5] overflow-hidden">
@@ -96,7 +115,8 @@ const Login = () => {
             onChangeHandler={onChangeHandler}
             placeholder="Password"
           />
-          <AuthButton text="Login" />
+          <AuthButton text="Login" loading={isLoading} />
+          <button onClick={loginAsGuest} className="text-xs text-[#652675] bg-[rgba(0,0,0,.05)] w-1/3 mx-auto p-2 rounded-md" >Login as Guest</button>
           <Link to="/register" className="text-xs text-[#652675]">
             Don't have an account?
           </Link>

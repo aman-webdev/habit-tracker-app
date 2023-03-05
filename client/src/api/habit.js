@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://habito-back-end.herokuapp.com/",
+  baseURL: "https://habit-tracker-server-7097.onrender.com/",
 });
 
 API.interceptors.request.use((req) => {
